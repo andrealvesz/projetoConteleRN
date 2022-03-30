@@ -5,8 +5,10 @@ import {
   StatusButton,
   StatusButtonText,
   ButtonBack,
+  ButtonText,
   Title,
 } from './styles';
+
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export const Header = ({ home, statusRoute, title }) => {
@@ -24,7 +26,7 @@ export const Header = ({ home, statusRoute, title }) => {
       {statusRoute && (
         <Container>
           <ButtonBack>
-            <MaterialCommunityIcons name="home" size={30} />
+            <ButtonText>Voltar</ButtonText>
           </ButtonBack>
           <Title>{title}</Title>
         </Container>

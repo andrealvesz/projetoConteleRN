@@ -24,4 +24,6 @@ export const StatusButtonText = styled.Text`
 
 export const ButtonBack = styled.TouchableOpacity``;
 
+export const ButtonText = styled.Text``;
+
 export const Title = styled.Text``;
