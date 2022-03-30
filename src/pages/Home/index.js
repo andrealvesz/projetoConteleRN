@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
   Container,
@@ -23,8 +23,28 @@ import { Header } from '../../components/Header';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { NativeBaseProvider, Switch } from 'native-base';
 
+import NetInfo from '@react-native-community/netinfo';
+
 export const Home = () => {
   const [intervalSelected, setIntervalSelected] = useState('10s');
+  const [status, setStatus] = useState('Offline');
+  const [checked, setChecked] = useState(true);
+
+  useEffect(() => {
+    verificarConexao();
+  }, []);
+
+  const verificarConexao = () => {
+    NetInfo.addEventListener(state => {
+      setStatus('Online');
+      console.log('Tipo de conexão', state.type);
+      console.log('Está conectado?', state.isConnected);
+    });
+  };
+
+  const handleToggle = () => {
+    setChecked(!checked);
+  };
 
   return (
     <NativeBaseProvider>
@@ -39,14 +59,19 @@ export const Home = () => {
           />
           <TitleBannerArea>
             <TitleBannerText>My GPS - Tracking</TitleBannerText>
-            <StatusApp>Online</StatusApp>
+            <StatusApp
+              color={status === 'Offline' ? Colors.offToggle : Colors.toggle}>
+              {status}
+            </StatusApp>
           </TitleBannerArea>
         </BannerArea>
 
         <StatusServiceArea>
           <StatusContent>
             <StatusText>Status do serviço</StatusText>
-            <StatusSubText>Serviço ativo</StatusSubText>
+            <StatusSubText>
+              Serviço {checked ? 'ativado' : 'desativado'}
+            </StatusSubText>
           </StatusContent>
           <Switch
             size="md"
@@ -54,6 +79,8 @@ export const Home = () => {
             onTrackColor={Colors.trackToggle}
             onThumbColor={Colors.toggle}
             offThumbColor={Colors.offToggle}
+            onToggle={handleToggle}
+            isChecked={checked}
           />
         </StatusServiceArea>
 

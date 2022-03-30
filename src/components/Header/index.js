@@ -9,8 +9,6 @@ import {
   Title,
 } from './styles';
 
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
 export const Header = ({ home, statusRoute, title }) => {
   return (
     <>

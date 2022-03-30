@@ -29,7 +29,7 @@ export const TitleBannerText = styled.Text`
 export const StatusApp = styled.Text`
   font-size: 14px;
   font-style: italic;
-  color: ${Colors.toggle};
+  color: ${props => props.color};
 `;
 
 export const StatusServiceArea = styled.View`
