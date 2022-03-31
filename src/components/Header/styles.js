@@ -8,6 +8,13 @@ export const Container = styled.View`
   background: ${Colors.secondary};
 `;
 
+export const ContainerStatus = styled.View`
+  flex-direction: row;
+  padding: 15px;
+  background: ${Colors.secondary};
+  justify-content: center;
+`;
+
 export const WelcomeArea = styled.Text`
   font-size: 16px;
   color: ${Colors.fontHeader};
@@ -22,8 +29,14 @@ export const StatusButtonText = styled.Text`
   color: ${Colors.fontHeader};
 `;
 
-export const ButtonBack = styled.TouchableOpacity``;
+export const ButtonBack = styled.TouchableOpacity`
+  position: absolute;
+  left: 20px;
+  top: 15px;
+  z-index: 999;
+`;
 
-export const ButtonText = styled.Text``;
-
-export const Title = styled.Text``;
+export const Title = styled.Text`
+  color: ${Colors.fontHeader};
+  font-size: 17px;
+`;

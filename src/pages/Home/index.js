@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 import {
   Container,
@@ -26,6 +27,8 @@ import { NativeBaseProvider, Switch } from 'native-base';
 import NetInfo from '@react-native-community/netinfo';
 
 export const Home = () => {
+  const { navigate } = useNavigation();
+
   const [intervalSelected, setIntervalSelected] = useState('10s');
   const [status, setStatus] = useState('Offline');
   const [checked, setChecked] = useState(true);
@@ -46,10 +49,14 @@ export const Home = () => {
     setChecked(!checked);
   };
 
+  const handleStatus = () => {
+    navigate('StatusScreen');
+  };
+
   return (
     <NativeBaseProvider>
       <Container>
-        <Header home />
+        <Header home handleStatus={handleStatus} />
 
         <BannerArea>
           <MaterialCommunityIcons
